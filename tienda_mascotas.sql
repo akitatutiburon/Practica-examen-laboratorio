@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2023 a las 16:40:20
+-- Tiempo de generación: 31-10-2023 a las 16:57:49
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -50,6 +50,16 @@ CREATE TABLE `clientes` (
   `ingreso_bruto_mensual` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id_cliente`, `nombres`, `apellidos`, `numero_ci`, `edad`, `ingreso_bruto_mensual`) VALUES
+(1, 'Jose Mauricio', 'Gómez Gomez', 5681624, 17, 2000000),
+(2, 'Jonathan Daviv', 'Aguirre Peralta', 7595416, 18, 500000),
+(3, 'Matias ', 'Amadeu', 4561230, 17, 120000),
+(4, 'Keisi ', 'Liebich Tacilla', 9854712, 19, 3600000);
+
 -- --------------------------------------------------------
 
 --
@@ -84,6 +94,15 @@ CREATE TABLE `productos` (
   `id_categoria` int(11) NOT NULL,
   `cantidad` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id_producto`, `nombre_producto`, `descripcion_producto`, `imagen`, `id_categoria`, `cantidad`) VALUES
+(1, 'Dogwopper', 'Snack para perros de Rey Hamburguesa', '', 1, 25),
+(2, 'Torre para arañar', 'Juguete para gatos ', '', 2, 4),
+(3, 'Afilaescamas para dragones', 'Afilador de escamas para dragones raza furia nocturna', '', 3, 13);
 
 -- --------------------------------------------------------
 
@@ -274,7 +293,7 @@ ALTER TABLE `adopciones`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `mascotas`
@@ -286,7 +305,7 @@ ALTER TABLE `mascotas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tabla_categoria`
