@@ -1,10 +1,15 @@
 h1 {
-    color: red;
+    color: #315266;
+}
+body{
+    background-color: #85bdde ;
+}
+th {
+    background-color: aquamarine;
 }
 tr {
-    background-color: aqua;
-    color: white;
-    border-color: red;
+    background-color: #bafafa;
+    color: black;
 }
 p {
     color: blueviolet;
@@ -14,4 +19,14 @@ p1 {
 }
 td-editar {
     color: black;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 2px solid black;
+    padding: 5px;
+    text-align: left;
 }
