@@ -30,3 +30,17 @@ th, td {
     padding: 5px;
     text-align: left;
 }
+
+
+.boton_borrar {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .boton_borrar:hover {
+    background-color: darkred;
+  }

@@ -1,46 +1,79 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario de Afirmación</title>
+</head>
+<body>
+  <h1>Formulario de Afirmación 2 </h1>
+
+  <form method="POST" action="eliminar_registro.php">
+
+    <label for="respuesta">¿Está seguro que desea eliminar el dato seleccionado?</label>
+    <input type="submit" name="respuesta" value="Sí">
+    <input type="submit" name="respuesta" value="No">
+
+  </form>
+
+
+
+
+</body>
+</html> -->
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    #$afirmacion = $_POST["afirmacion"];
+    $respuesta = $_POST["respuesta"];
+    $true = "Sí";
+    $false = "No";
+    if($respuesta == $true){
+        echo "respuesta afirmativa";
 
-$variable = $_GET['variable'];
 
-echo $variable;
-
-
-// Obtener el ID del registro a eliminar desde el formulario
-$id_registro = $_GET['id_mascota'];
-
-echo $id_registro;
-
-// Establecer la conexión con la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tienda_mascotas";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar si la conexión fue exitosa
-if ($conn->connect_error) {
-    die('Error de conexión: ' . $conn->connect_error);
+        
+    } else {
+        echo "respuesta negativa";
+    }
+    echo "Respuesta: " . $respuesta;
 }
+include 'conexion.php';
+// // Comprueba si la variable está definida y no es nula
+// $idEsperado = 1;
 
+// if (isset($_GET['id'])) {
+//     // Obtén el valor de la variable ID
+//     $id = $_GET['id'];
 
+//     // Compara el valor de la variable con el valor ID esperado
+//     if ($id == $idEsperado) {
+//         // La variable tiene el valor ID esperado
+//         echo "La variable tiene el valor ID esperado. ";
+//     } else {
+//         // La variable no tiene el valor ID esperado
+//         echo "La variable no tiene el valor ID esperado. ";
+//     }
+// } else {
+//     // La variable no está definida o es nula
+//     echo "La variable no está definida o es nula. ";
+// }
+if(isset($_GET['id'])){
+    
+    $variable = $_GET['id'];
+    echo $variable;
 
+    // Construir la consulta SQL para eliminar el registro
+    $eliminar = "DELETE FROM mascotas WHERE id_mascota = $variable";
 
-// Construir la consulta SQL para eliminar el registro
-echo $eliminar = "DELETE FROM mascotas WHERE id_mascota = $id_registro";
+    // Para evitar eliminar
+    exit();
 
-exit();
-
-//$confirmar_eliminar = $conn->query($eliminar);
-
-// Ejecutar la consulta
-if ($conn->query($eliminar) === TRUE) {
-    echo 'Registro eliminado exitosamente';
+    // Ejecutar la consulta
+    if ($conn->query($eliminar) === TRUE) {
+        echo 'Registro eliminado exitosamente';
+    } else {
+        echo 'Error al eliminar el registro: ' . $conn->error;
+    }    
 } else {
-    echo 'Error al eliminar el registro: ' . $conn->error;
-}    
-
-
-// Cerrar la conexión con la base de datos
-$conn->close();
+    echo "no funca :(";
+}
+include 'cerrar_conexion.php';
 ?>
