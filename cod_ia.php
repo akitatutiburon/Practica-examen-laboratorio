@@ -32,7 +32,10 @@ if ($result->num_rows > 0) {
     <th>Especie</th>
     <th>Género</th>
     <th>Precio</th>
-    <th>Imágenes</th>
+    <th>Imágen</th>
+    <th>Estado de salud</th>
+    <th>Descripcion</th>
+    <th>Estado legal de la mascota</th>
     <th>Borrar</th>
     <th>Editar</th>
     </tr>";
@@ -44,7 +47,19 @@ if ($result->num_rows > 0) {
         echo "<td>".$row["raza"]."</td>";
         echo "<td>".$row["edad"]."</td>";
         echo "<td>".$row["especie"]."</td>";
-        echo "<td>".$row["genero"]."</td>";
+        echo "<td>";
+        switch ($row["genero"]){
+            case 1:
+                echo "Macho";
+                break;
+            case 2:
+                echo "Hembra";
+                break;
+            default:
+                echo "Error en ingreso de datos en base de datos";
+                break;
+        }
+        echo "</td>";
         echo "<td>".$row["precio"]."</td>";
         echo "<td>";
         if($row["imagen"] == 0){
@@ -53,17 +68,42 @@ if ($result->num_rows > 0) {
         //} else {
         //    echo "<img src="chimuelo.jfif" alt="Chimuelo">"; 
         }
-        // Codigo de IA para usar botón de eliminado
+        echo "</td>";
+
+        echo "<td>";
+        switch ($row['estado_salud']){
+            case 1:
+                echo 'Sano';
+                break;
+            case 2:
+                echo 'Débil';
+                break;
+            case 3:
+                echo 'Enfermo';
+                break;
+            case 4:
+                echo 'Muerto';
+                break;
+            case 5:
+                echo 'En rehabilitación';
+                break;
+            case 6:
+                echo 'En cuidados intensivos';
+                break;
+            default:
+                echo "Error en ingreso de datos en base de datos";
+                break;
+        }
+        echo "</td>";
         
-        // No funciona el JavaScript 
-    echo "<td>" . "
-    <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_mascota'] . "'>
-    Borrar</a>" . "
-    </td>";
-       
-       // echo "<td>" . "<button onclick='confirmarEliminacion()' class='boton_popup_confirm' >Botón eliminar registro</button>" . "</td>";
-        
-        
+        echo "<td>".$row["descripcion"]."</td>";
+        echo "<td>".$row["estado_legal_mascota"]."</td>";
+
+        echo "<td>" . "
+        <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_mascota'] . "'>
+        Borrar</a>" . "
+        </td>";
+        #echo "<td>" . "</td>";
         echo "<td>". "Botón epico de editar"."</td>";
         
         echo "</td>";

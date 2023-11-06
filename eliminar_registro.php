@@ -19,22 +19,26 @@
 
 </body>
 </html> -->
+
+<!-- Por el momento no sirve -->
+
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    #$afirmacion = $_POST["afirmacion"];
-    $respuesta = $_POST["respuesta"];
-    $true = "Sí";
-    $false = "No";
-    if($respuesta == $true){
-        echo "respuesta afirmativa";
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     #$afirmacion = $_POST["afirmacion"];
+//     $respuesta = $_POST["respuesta"];
+//     $true = "Sí";
+//     $false = "No";
+//     if($respuesta == $true){
+//         echo "respuesta afirmativa";
 
 
         
-    } else {
-        echo "respuesta negativa";
-    }
-    echo "Respuesta: " . $respuesta;
-}
+//     } else {
+//         echo "respuesta negativa";
+//     }
+//     echo "Respuesta: " . $respuesta;
+// }
+
 include 'conexion.php';
 // // Comprueba si la variable está definida y no es nula
 // $idEsperado = 1;
@@ -64,7 +68,7 @@ if(isset($_GET['id'])){
     $eliminar = "DELETE FROM mascotas WHERE id_mascota = $variable";
 
     // Para evitar eliminar
-    exit();
+    //exit();
 
     // Ejecutar la consulta
     if ($conn->query($eliminar) === TRUE) {

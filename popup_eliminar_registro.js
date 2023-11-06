@@ -1,3 +1,7 @@
+
+// Por el momento inútil
+
+
 function confirmarEliminacion() {
     var respuesta = confirm("¿Estás seguro de eliminar este registro de forma permanente?");
     

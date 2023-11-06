@@ -36,8 +36,8 @@ th, td {
     background-color: red;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 5px 10px;
+    border-radius: 2px;
     cursor: pointer;
   }
   
