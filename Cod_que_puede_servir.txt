@@ -30,3 +30,10 @@
 
 </body>
 </html>
+
+--------------------------------------------------------------------------------------
+
+
+https://www.w3schools.com/html/html_form_input_types.asp
+Para colocar un popup solo con html
+Para las contraseñas

@@ -1,51 +1,49 @@
 <?php
 include 'conexion.php';
 
-$llamada_tabla_estado_salud = "SELECT * FROM tabla_estado_salud";
-$respuesta_llamada_tabla_estado_salud = $conn->query($llamada_tabla_estado_salud);
 
-// foreach ($respuesta_llamada_tabla_estado_salud as $cosa_rara){
-//     echo $cosa_rara['id_estado_salud'];
-//     echo $cosa_rara['nombre_estado_salud'];
-// } 
+// Obtener los valores enviados desde el formulario
+$id_mascota = $_POST['id_mascota'];
+$nombre = $_POST['nombre'];
+$especie = $_POST['especie'];
+$raza = $_POST['raza'];
+$edad = $_POST['edad'];
+$genero = $_POST['genero'];
+$imagen = $_POST['imagen'];
+$descripcion = $_POST['descripcion'];
+$estado_salud = $_POST['estado_salud'];
+$estado_legal_mascota = $_POST['estado_legal_mascota'];
+$precio = $_POST['precio'];
 
-$variable_chota = 1;
-
-foreach ($respuesta_llamada_tabla_estado_salud as $default){
-    
-    print_r($default);
 
 
-    
+// $id_mascota;
+// $nombre = "Nestor";
+// $especie = "castor";
+// $raza = "constructor";
+// $edad = 4;
+// $genero = 1;
+// $imagen;
+// $descripcion = "El castor de Luis";
+// $estado_salud = 2;
+// $estado_legal_mascota = 1;
+// $precio = floatval("26,99");
 
-    switch ($variable_chota){
-        case 1:
-            echo $default['nombre_estado_salud']. ' ';
-            break;
-        case 2:
-            echo $default['nombre_estado_salud']. ' ';
-            break;
-        case 3:
-            echo $default['nombre_estado_salud']. ' ';
-            break;
-        case 4:
-            echo $default['nombre_estado_salud']. ' ';
-            break;
-        case 5:
-            echo $default['nombre_estado_salud']. ' ';
-            break;
-        case 6:
-            echo $default['nombre_estado_salud']. ' ';
-            break;
-        default:
-            echo "Error en ingreso de datos en base de datos";
-            break;
-    }
+
+// Crear la consulta SQL para insertar el registro en la tabla
+$sql = "INSERT INTO  mascotas (`id_mascota`, `nombre`, `especie`, `raza`, `edad`, `genero`, `imagen`, `descripcion`, `estado_salud`, `estado_legal_mascota`, `precio`) VALUES ('$id_mascota', '$nombre', '$especie', '$raza', '$edad', '$genero', '$imagen', '$descripcion', '$estado_salud', '$estado_legal_mascota', '$precio')";
+
+//echo $sql. " ";
+
+// Ejecutar la consulta SQL
+if (mysqli_query($conn, $sql)) {
+    echo "Registro ingresado correctamente";
+} else {
+    echo "Error al ingresar el registro: " . mysqli_error($conn);
 }
 
 
 
-
-
 include 'cerrar_conexion.php';
+
 ?>
