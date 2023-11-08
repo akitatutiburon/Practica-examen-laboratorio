@@ -12,8 +12,6 @@
 </head>
 <body>
     <h1>Lista de Mascotas Disponibles</h1>
-
-
 <?php
 include 'conexion.php';
 
@@ -23,7 +21,7 @@ $sql = "SELECT * FROM mascotas";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // Mostrar los registros en una tabla
+    // Titulos de los atributos
     echo "<table>";
     echo "<tr>
     <th>ID</th>
@@ -40,6 +38,8 @@ if ($result->num_rows > 0) {
     <th>Borrar</th>
     <th>Editar</th>
     </tr>";
+
+    // Mostrar los registros en una tabla
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
 
@@ -48,7 +48,7 @@ if ($result->num_rows > 0) {
         if ($row['id_mascota']== ""){
             echo "Error en ingreso de datos en base de datos";
             
-        } else {
+            } else {
             echo $row['id_mascota'];
         }
         echo "</td>";
@@ -58,7 +58,7 @@ if ($result->num_rows > 0) {
         if ($row['nombre']== ""){
             echo "Error en ingreso de datos en base de datos";
             
-        } else {
+            } else {
             echo $row['nombre'];
         }
         echo "</td>";
@@ -68,7 +68,7 @@ if ($result->num_rows > 0) {
         if ($row['raza']== ""){
             echo "Error en ingreso de datos en base de datos";
             
-        } else {
+            } else {
             echo $row['raza'];
         }
         echo "</td>";
@@ -78,7 +78,7 @@ if ($result->num_rows > 0) {
         if ($row['edad']== ""){
             echo "Error en ingreso de datos en base de datos";
             
-        } else {
+            } else {
             echo $row['edad'];
         }
         echo "</td>";
@@ -88,7 +88,7 @@ if ($result->num_rows > 0) {
         if ($row['especie']== ""){
             echo "Error en ingreso de datos en base de datos";
             
-        } else {
+            } else {
             echo $row['especie'];
         }
         echo "</td>";
@@ -110,10 +110,10 @@ if ($result->num_rows > 0) {
 
         //echo "<td>".$row["precio"]."</td>";
         echo "<td>";
-        if ($row['precio']== "0.00"){
+        if ($row['precio'] == "0.00"){
             echo "Error en ingreso de datos en base de datos";
             
-        } else {
+            } else {
             echo $row['precio'];
         }
         echo "</td>";
@@ -122,9 +122,9 @@ if ($result->num_rows > 0) {
         echo "<td>";
         if($row["imagen"] == 0){
             echo "No hay imágen disponible";
-        //Probar para que salga automaticamente ¿?
-        //} else {
-        //    echo "<img src="chimuelo.jfif" alt="Chimuelo">"; 
+            //Probar para que salga automaticamente ¿?
+            //} else {
+            //    echo "<img src="chimuelo.jfif" alt="Chimuelo">"; 
         }
         echo "</td>";
 
@@ -169,8 +169,19 @@ if ($result->num_rows > 0) {
         echo "<td>";
         switch ($row['estado_legal_mascota']){
             case 1:
-                echo 'Adoptada';
+                // Por si es macho o hembra xd
+                if ($row["genero"] == 1){
+                    echo 'Adoptado';
+                    break;    
+                } elseif ($row["genero"] == 2) {
+                    echo 'Adoptada';
+                    break;
+                } else {
+                    echo "Error en ingreso de datos en base de datos";
                 break;
+                }
+                // echo 'Adoptada';
+                // break;
             case 2:
                 echo 'En proceso de adopcion';
                 break;
@@ -189,7 +200,6 @@ if ($result->num_rows > 0) {
         </td>";
 
         // Botón de editar
-        //echo "<td>". "Botón epico de editar"."</td>";
         echo "<td>" . "
         <a class='boton_editar' href='cambiar_datos_registro.php?id=" . $row['id_mascota'] . "'>Editar</a>" . "
         </td>";
