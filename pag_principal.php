@@ -185,12 +185,14 @@ if ($result->num_rows > 0) {
 
         // Botón de borrar
         echo "<td>" . "
-        <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_mascota'] . "'>
-        Borrar</a>" . "
+        <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_mascota'] . "'>Borrar</a>" . "
         </td>";
 
         // Botón de editar
-        echo "<td>". "Botón epico de editar"."</td>";
+        //echo "<td>". "Botón epico de editar"."</td>";
+        echo "<td>" . "
+        <a class='boton_editar' href='cambiar_datos_registro.php?id=" . $row['id_mascota'] . "'>Editar</a>" . "
+        </td>";
         
 
         // <--- Fin de Tablas --->
@@ -204,7 +206,7 @@ if ($result->num_rows > 0) {
 }
 
 //<---  Colocar botón de formulario de añadir registros --->
-include 'agregar_registros.php';
+include 'formulario_agregar_registros.php';
 include 'cerrar_conexion.php';
 ?>
 

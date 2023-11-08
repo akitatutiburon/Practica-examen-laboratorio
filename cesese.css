@@ -31,6 +31,18 @@ th, td {
     text-align: left;
 }
 
+.boton_editar {
+    background-color: goldenrod;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+  
+.boton_editar:hover {
+    background-color: darkgoldenrod;
+}
 
 .boton_borrar {
     background-color: red;
