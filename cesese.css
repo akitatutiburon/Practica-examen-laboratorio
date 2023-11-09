@@ -31,16 +31,33 @@ th, td {
     text-align: left;
 }
 
+.boton_editar {
+    background-color: goldenrod;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+  
+.boton_editar:hover {
+    background-color: darkgoldenrod;
+}
 
 .boton_borrar {
     background-color: red;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 5px 10px;
+    border-radius: 2px;
     cursor: pointer;
-  }
+}
   
-  .boton_borrar:hover {
+.boton_borrar:hover {
     background-color: darkred;
-  }
+}
+/* <--- Para darle color a los registros vacíos y que quede más lindo (ponele) --->
+error_registro {
+    color: yellow;
+}
+*/

@@ -1,41 +1,6 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <title>Formulario de Afirmación</title>
-</head>
-<body>
-  <h1>Formulario de Afirmación 2 </h1>
-
-  <form method="POST" action="eliminar_registro.php">
-
-    <label for="respuesta">¿Está seguro que desea eliminar el dato seleccionado?</label>
-    <input type="submit" name="respuesta" value="Sí">
-    <input type="submit" name="respuesta" value="No">
-
-  </form>
-
-
-
-
-</body>
-</html> -->
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    #$afirmacion = $_POST["afirmacion"];
-    $respuesta = $_POST["respuesta"];
-    $true = "Sí";
-    $false = "No";
-    if($respuesta == $true){
-        echo "respuesta afirmativa";
-
-
-        
-    } else {
-        echo "respuesta negativa";
-    }
-    echo "Respuesta: " . $respuesta;
-}
 include 'conexion.php';
+
 // // Comprueba si la variable está definida y no es nula
 // $idEsperado = 1;
 
@@ -58,13 +23,13 @@ include 'conexion.php';
 if(isset($_GET['id'])){
     
     $variable = $_GET['id'];
-    echo $variable;
+    //echo $variable;
 
     // Construir la consulta SQL para eliminar el registro
     $eliminar = "DELETE FROM mascotas WHERE id_mascota = $variable";
 
     // Para evitar eliminar
-    exit();
+    //exit();
 
     // Ejecutar la consulta
     if ($conn->query($eliminar) === TRUE) {
