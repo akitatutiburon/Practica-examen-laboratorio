@@ -45,16 +45,16 @@ $registro = mysqli_fetch_assoc($resultado);
 ?>
 <form action="actualizar_datos_registro.php" method="POST">
     <input type="hidden" name="id_mascota" value="<?php echo $registro['id_mascota']; ?>">
-    <input type="text" name="campo1" value="<?php echo $registro['nombre']; ?>">
-    <input type="text" name="campo2" value="<?php echo $registro['precio']; ?>">
-    <input type="text" name="campo3" value="<?php echo $registro['especie']; ?>"/>
-    <input type="text" name="campo4" value="<?php echo $registro['raza']; ?>"/>
-    <input type="text" name="campo5" value="<?php echo $registro['edad']; ?>"/>
-    <input type="text" name="campo6" value="<?php echo $registro['genero']; ?>"/> 
-    <input type="text" name="campo7" value="<?php echo $registro['imagen']; ?>"/>
-    <input type="text" name="campo8" value="<?php echo $registro['descripcion']; ?>"/>
-    <input type="text" name="campo9" value="<?php echo $registro['estado_salud']; ?>"/>
-    <input type="text" name="campo10" value="<?php echo $registro['estado_legal_mascota']; ?>"/>
+    <input type="text" name="campo1" placeholder="Nombre de la mascota" value="<?php echo $registro['nombre']; ?>">
+    <input type="text" name="campo2" placeholder="Precio de la mascota" value="<?php echo $registro['precio']; ?>">
+    <input type="text" name="campo3" placeholder="Especie" value="<?php echo $registro['especie']; ?>"/>
+    <input type="text" name="campo4" placeholder="Raza" value="<?php echo $registro['raza']; ?>"/>
+    <input type="text" name="campo5" placeholder="Edad" value="<?php echo $registro['edad']; ?>"/>
+    <input type="text" name="campo6" placeholder="Género" value="<?php echo $registro['genero']; ?>"/> 
+    <input type="text" name="campo7" placeholder="Direccion de imagen" value="<?php echo $registro['imagen']; ?>"/>
+    <input type="text" name="campo8" placeholder="Descripción de la mascota" value="<?php echo $registro['descripcion']; ?>"/>
+    <input type="text" name="campo9" placeholder="Estado de salud" value="<?php echo $registro['estado_salud']; ?>"/>
+    <input type="text" name="campo10" placeholder="Estado legal" value="<?php echo $registro['estado_legal_mascota']; ?>"/>
     <input type="submit" value="Guardar cambios">
 </form>
 <?php

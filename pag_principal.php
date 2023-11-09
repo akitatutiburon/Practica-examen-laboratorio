@@ -5,13 +5,13 @@
     <!-- Imagen de Chimuelo 
         <img src="chimuelo.jfif" alt="Chimuelo"> 
     -->
-    <title>Lista de Mascotas Disponibles</title>
+    <title>Lista de Mascotas</title>
     <script src="popup_eliminar_registro.js"></script>
 
 
 </head>
 <body>
-    <h1>Lista de Mascotas Disponibles</h1>
+    <h1>Lista de Mascotas</h1>
 <?php
 include 'conexion.php';
 
