@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="cesese.css">
+    <link rel="stylesheet" href="../cesese.css">
     <!-- Imagen de Chimuelo 
         <img src="chimuelo.jfif" alt="Chimuelo"> 
     -->
@@ -13,7 +13,7 @@
 <body>
     <h1>Lista de Mascotas</h1>
 <?php
-include 'conexion.php';
+include '../conexion.php';
 
 
 // Consulta de todos los registros de la tabla "mascotas_disponibles"
@@ -217,7 +217,7 @@ if ($result->num_rows > 0) {
 
 //<---  Colocar botón de formulario de añadir registros --->
 include 'formulario_agregar_registros.php';
-include 'cerrar_conexion.php';
+include '../cerrar_conexion.php';
 ?>
 
  

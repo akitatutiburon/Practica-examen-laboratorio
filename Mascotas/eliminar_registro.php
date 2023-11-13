@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php';
+include '../conexion.php';
 
 // // Comprueba si la variable está definida y no es nula
 // $idEsperado = 1;
@@ -49,5 +49,5 @@ if(isset($_GET['id'])){
 } else {
     echo "No recibe la id necesaria";
 }
-include 'cerrar_conexion.php';
+include '../cerrar_conexion.php';
 ?>

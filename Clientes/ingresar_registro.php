@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php';
+include '../conexion.php';
 
 // Paso 4: Procesa los datos editados
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -10,23 +10,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $campo3 = $_POST["campo3"];
   $campo4 = $_POST["campo4"];
   $campo5 = $_POST["campo5"];
-  $campo6 = $_POST["campo6"];
-  $campo7 = $_POST["campo7"];
-  $campo8 = $_POST["campo8"];
-  $campo9 = $_POST["campo9"];
-  $campo10 = $_POST["campo10"];
 
   //Petición de update a Base de Datos
-  $sql = "UPDATE mascotas SET nombre = '$campo1', 
-  precio = '$campo2', 
-  especie = '$campo3', 
-  raza = '$campo4', 
-  edad = '$campo5', 
-  genero = '$campo6', 
-  imagen = '$campo7', 
-  descripcion = '$campo8', 
-  estado_salud = '$campo9', 
-  estado_legal_mascota = '$campo10' WHERE id_mascota = $id_registro";
+  $sql = "UPDATE clientes SET nombres = '$campo1', 
+  apellidos = '$campo2', 
+  numero_ci = '$campo3', 
+  edad = '$campo4', 
+  ingreso_bruto_mensual = '$campo5'  
+  WHERE id_cliente = $id_registro";
   echo $sql;
   //mysqli_query($conn, $sql);
   
@@ -38,5 +29,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 }
 
-include 'cerrar_conexion.php';
+include '../cerrar_conexion.php';
 ?>

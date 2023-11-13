@@ -1,5 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../cesese.css">
+    <!-- Imagen de Chimuelo 
+        <img src="chimuelo.jfif" alt="Chimuelo"> 
+    -->
+    <title>Adopciones y Clientes</title>
+
+
+</head>
+<body>
+    <h1>Lista de Adopciones</h1>
+
 <?php
-include 'conexion.php';
+include '../conexion.php';
 
 
 // Consulta para obtener todos los registros de la tabla "adopciones"
@@ -34,22 +48,11 @@ if ($result_adopciones->num_rows > 0) {
     echo "No se encontraron registros en la tabla 'adopciones'.";
 }
 
-// if ($result_adopciones->num_rows > 0) {
-//     // Mostrar los registros
-//     while ($row = $result_adopciones->fetch_assoc()) {
-//         echo "ID: " . $row["id_adopciones"] . "<br>";
-//         echo "id_cliente: " . $row["id_cliente"] . "<br>";
-//         echo "id_mascota: " . $row["id_mascota"] . "<br>";
-//         echo "fecha: " . $row["fecha"] . "<br>";
-//         echo "estado_legal_adopcion: " . $row["estado_legal_adopcion"] . "<br>";
-//         // Agrega aquí los demás campos que deseas mostrar
-//         echo "<br>";
-//     }
-//     echo "Fin de adopciones" . "<br>";
-//     echo "<br>";
-// } else {
-//     echo "No se encontraron registros en la tabla adopciones.";
-// }
+?>
+
+<h1>Lista de Clientes</h1>
+
+<?php
 
 if ($result_clientes->num_rows > 0) {
     echo "<table>";
@@ -60,6 +63,7 @@ if ($result_clientes->num_rows > 0) {
     <th>numero_ci</th>
     <th>edad</th>
     <th>ingreso_bruto_mensual</th>
+    <th>Editar</th>
     </tr>";
     while ($row = $result_clientes->fetch_assoc()) {
         echo "<tr>
@@ -69,6 +73,9 @@ if ($result_clientes->num_rows > 0) {
         <td>" . $row["numero_ci"] . "</td>
         <td>" . $row["edad"] . "</td>
         <td>" . $row["ingreso_bruto_mensual"]. "</td>
+        <td>" . "
+        <a class='boton_editar' href='cambiar_datos_registro.php?id=" . $row['id_cliente'] . "'>Editar</a>" . "
+        </td>
         </tr>";
     }
     echo "</table>";
@@ -98,5 +105,9 @@ if ($result_clientes->num_rows > 0) {
 // }
 
 
-include 'cerrar_conexion.php';
+include '../cerrar_conexion.php';
 ?>
+
+
+</body>
+</html>

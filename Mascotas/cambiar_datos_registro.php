@@ -1,38 +1,5 @@
 <?php
-include 'conexion.php';
-
-
-// // Paso 3: Verifica la consulta SQL
-// //$id_registro = 22;
-// $id_registro = $_GET["id_mascota"];
-// $sql = "SELECT * FROM mascotas WHERE id_mascota = $id_registro";
-// $resultado = mysqli_query($conn, $sql);
-
-// if (!$resultado) {
-//   die("Error en la consulta: " . mysqli_error($conn));
-// }
-
-// // Paso 4: Verifica si se encontraron resultados
-// if (mysqli_num_rows($resultado) > 0) {
-//   // Recupera los datos del registro a editar
-//   $registro = mysqli_fetch_assoc($resultado);
-
-//   // Resto del código para mostrar y procesar los datos del formulario
-// } else {
-//   echo "No se encontraron registros.";
-// }
-
-
-// Paso 2: Recupera los datos del registro a editar
-//$id_registro = 20;
-// if(isset($_GET['id'])){
-    
-//   $variable2 = $_GET['id'];
-//   echo $variable2;
-//   echo 'Se recibe el id';
-// } else {
-//   echo 'No se recibe el id';
-// }    
+include '../conexion.php';
 
 
 $id_registro = $_GET["id"];
@@ -60,5 +27,5 @@ $registro = mysqli_fetch_assoc($resultado);
 <?php
 
 
-include 'cerrar_conexion.php';
+include '../cerrar_conexion.php';
 ?>
