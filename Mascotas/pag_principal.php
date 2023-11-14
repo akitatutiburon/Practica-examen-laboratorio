@@ -123,8 +123,8 @@ if ($result->num_rows > 0) {
         if($row["imagen"] == 0){
             echo "No hay imágen disponible";
             //Probar para que salga automaticamente ¿?
-            //} else {
-            //    echo "<img src="chimuelo.jfif" alt="Chimuelo">"; 
+        //} else {
+            //echo "<img src='../imagenes/chimuelo.jfif' alt='Chimuelo'>"; 
         }
         echo "</td>";
 

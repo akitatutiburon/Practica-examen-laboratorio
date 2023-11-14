@@ -1,7 +1,4 @@
 <?php
-
-// --- INUTIL POR AHORA ---(Preguntor a David)
-
 include '../conexion.php';
 
 $variable = $_GET['variable'];
@@ -9,7 +6,7 @@ echo $variable;
 
 
 // Obtener el valor del atributo "rol_usuario" del registro de "id_usuario" en la tabla "usuarios"
-$sql = "SELECT rol_usuario FROM usuarios WHERE correo_electronico = $variable";
+$sql = "SELECT rol_usuario FROM usuarios WHERE id_usuario = $variable";
 $result = $conn->query($sql);
 echo $sql;
 

@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php';
+include '../conexion.php';
 
 
 // Obtener los valores enviados desde el formulario
@@ -27,5 +27,6 @@ if (mysqli_query($conn, $sql)) {
 }
 
 
-include 'cerrar_conexion.php';
+include '../cerrar_conexion.php';
 ?>
+<a class='boton_regresar' href='pag_principal.php'>Entendido</a>

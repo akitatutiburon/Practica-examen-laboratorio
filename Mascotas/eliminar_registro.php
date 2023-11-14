@@ -51,3 +51,4 @@ if(isset($_GET['id'])){
 }
 include '../cerrar_conexion.php';
 ?>
+<a class='boton_regresar' href='pag_principal.php'>Entendido</a>

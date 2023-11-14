@@ -1,6 +1,3 @@
-<!-- Inutil por ahora (Preguntor a David) -->
-
-
 <!DOCTYPE html>
 <html>
 

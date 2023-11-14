@@ -10,7 +10,7 @@ $registro = mysqli_fetch_assoc($resultado);
 
 // Paso 3: Muestra los datos en un formulario
 ?>
-<form action="ingresar_registro.php" method="POST">
+<form action="actualizar_datos_registro.php" method="POST">
     <input type="hidden" name="id_mascota" value="<?php echo $registro['id_cliente']; ?>">
     <input type="text" name="campo1" placeholder="Nombre del cliente" value="<?php echo $registro['nombres']; ?>">
     <input type="text" name="campo2" placeholder="Apellidos del cliente" value="<?php echo $registro['apellidos']; ?>">
