@@ -1,6 +1,6 @@
 <!-- Inutil por ahora (Preguntor a David) -->
 
-<!-- 
+
 <!DOCTYPE html>
 <html>
 
@@ -13,4 +13,4 @@
   <input type="password" id="contrasena" name="contrasena"><br><br>
   <input type="submit" value="Iniciar sesión">
 </form>
-</html> -->
+</html>
