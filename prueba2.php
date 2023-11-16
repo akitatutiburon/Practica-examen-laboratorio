@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
 // $fila = mysqli_fetch_assoc($resultado);
 // echo $fila['nombre_estado_legal_adopcion'];
 
-print_r($opciones_mascotas[0]['nombre']);
+print_r($opciones_mascotas[4]['nombre']);
 
 $opcion1 = "cosa1";
 $opcion2 = "Opción 2";
@@ -44,6 +44,7 @@ array_push($opciones, $opcion1, $opcion2, $opcion3);
 //print_r($opciones);
 $cantidad_opciones = count($opciones_mascotas);
 //echo $cantidad_opciones;
+
 ?>
 
 <form method="POST" action="prueba3.php">
@@ -53,11 +54,8 @@ $cantidad_opciones = count($opciones_mascotas);
     
     // Generar opciones
     for ($i = 0; $i < $cantidad_opciones; $i++) {
-      //$variable = "opcion" . $i;
       $variable = $opciones_mascotas[$i]['nombre'];
-      //$valor = $$variable;
-      //echo "<option value=\"$valor\">$valor</option>";
-      echo "<option value=\"$opciones_mascotas[$i]\">$variable</option>";
+      echo "<option value=\"$variable\">$variable</option>";
     }
     ?>
   </select>
