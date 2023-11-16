@@ -1,9 +1,82 @@
+<?php
+include '../conexion.php';
+
+// Consulta SQL para obtener los registros de la tabla "mascotas"
+$sql1 = "SELECT id_mascota, nombre FROM mascotas";
+$result1 = $conn->query($sql1);
+
+$opciones_mascotas = array();
+// Verificar si se encontraron registros
+if ($result1->num_rows > 0) {
+  // Recorrer los registros y almacenarlos
+  while ($row1 = $result1->fetch_assoc()) {
+    array_push($opciones_mascotas, $row1);
+  }    
+} else {
+    echo "No se encontraron registros de mascotas.";
+}
+$cantidad_opciones1 = count($opciones_mascotas);
+//echo $cantidad_opciones;
+
+$sql2 = "SELECT id_cliente, nombres, apellidos FROM clientes";
+$result2 = $conn->query($sql2);
+$opciones_clientes = array();
+if ($result2->num_rows > 0) {
+  while ($row2 = $result2->fetch_assoc()) {
+    array_push($opciones_clientes, $row2);
+  }    
+} else {
+    echo "No se encontraron registros de clientes.";
+}
+$cantidad_opciones2 = count($opciones_clientes);
+
+$sql3 = "SELECT id_estado_legal_adopcion, nombre_estado_legal_adopcion FROM tabla_estado_legal_adopcion";
+$result3 = $conn->query($sql3);
+
+$opciones_estado_legal_adopcion = array();
+if ($result3->num_rows > 0) {
+  while ($row3 = $result3->fetch_assoc()) {
+    array_push($opciones_estado_legal_adopcion, $row3);
+  }    
+} else {
+    echo "No se encontraron registros de Estados legales de adopción.";
+}
+$cantidad_opciones3 = count($opciones_estado_legal_adopcion);
+
+
+?>
+
 <form action="agregar_registros.php" method="post" id="formulario_aniadir_registro_adopciones" style="display: none;">
     id_adopciones : <input type="hidden" name="id_adopciones" /><br/>
-    id_mascota : <input type="numeric" name="id_mascota" required/><br/>
-    id_cliente : <input type="numeric" name="id_cliente" required/><br/>
+    id_mascota : <select name="id_mascota" id="opcion">
+    <?php
+    // Generar opciones
+    for ($i = 0; $i < $cantidad_opciones1; $i++) {
+      $variable1 = $opciones_mascotas[$i]['nombre'];
+      $dato1 = $opciones_mascotas[$i]['id_mascota'];
+      echo "<option value=\"$dato1\">$variable1</option>";
+    }
+    ?>
+    </select><br/>
+    id_cliente : <select name="id_cliente" id="opcion">
+    <?php
+    for ($i = 0; $i < $cantidad_opciones2; $i++) {
+      $variable2 = $opciones_clientes[$i]['nombres'];
+      $dato2 = $opciones_clientes[$i]['id_cliente'];
+      echo "<option value=\"$dato2\">$variable2</option>";
+    }
+    ?>
+    </select><br/>
     fecha : <input type="datetime-local" name="fecha" required/><br/>
-    estado_legal_adopcion: <input type="numeric" name="estado_legal_adopcion" required/><br/>
+    estado_legal_adopcion : <select name="id_estado_legal_adopcion" id="opcion">
+    <?php
+    for ($i = 0; $i < $cantidad_opciones3; $i++) {
+      $variable3 = $opciones_estado_legal_adopcion[$i]['nombre_estado_legal_adopcion'];
+      $dato3 = $opciones_estado_legal_adopcion[$i]['id_estado_legal_adopcion'];
+      echo "<option value=\"$dato3\">$variable3</option>";
+    }
+    ?>
+    </select><br/>
     <input type="submit" value="Enviar"> 
     <input type="reset" value="Reset">
 </form>

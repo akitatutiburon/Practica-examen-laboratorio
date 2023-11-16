@@ -31,6 +31,8 @@ if ($result_adopciones->num_rows > 0) {
     <th>Nombre de la mascota</th>
     <th>fecha</th>
     <th>estado_legal_adopcion</th>
+    <th>Borrar</th>
+    <th>Editar</th>
     </tr>";
     while ($row = $result_adopciones->fetch_assoc()) {
         echo "<tr>
@@ -67,6 +69,12 @@ if ($result_adopciones->num_rows > 0) {
             echo "No se encontraron resultados.";
         }
         echo "</td>
+        <td>" . "
+        <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_adopciones'] . "'>Borrar</a>" . "
+        </td>
+        <td>" . "
+        <a class='boton_editar' href='cambiar_datos_registro.php?id=" . $row['id_adopciones'] . "'>Editar</a>" . "
+        </td>
 
         </tr>";
     }
