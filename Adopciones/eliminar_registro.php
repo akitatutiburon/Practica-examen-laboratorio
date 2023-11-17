@@ -28,4 +28,4 @@ if(isset($_GET['id'])){
 }
 include '../cerrar_conexion.php';
 ?>
-<a class='boton_regresar' href='adopciones.php'>Entendido</a>
+<a class='boton_regresar' href='adopciones.php'></br>Entendido</a>

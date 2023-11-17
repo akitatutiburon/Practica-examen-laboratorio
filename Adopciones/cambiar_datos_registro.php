@@ -11,12 +11,11 @@ $registro = mysqli_fetch_assoc($resultado);
 // Paso 3: Muestra los datos en un formulario
 ?>
 <form action="actualizar_datos_registro.php" method="POST">
-    <input type="hidden" name="id_mascota" value="<?php echo $registro['id_adopciones']; ?>">
-    <input type="text" name="campo1" placeholder="Nombre del cliente" value="<?php echo $registro['id_adopciones']; ?>">
-    <input type="text" name="campo2" placeholder="Apellidos del cliente" value="<?php echo $registro['id_mascota']; ?>">
-    <input type="text" name="campo3" placeholder="numero de C.I." value="<?php echo $registro['id_cliente']; ?>"/>
-    <input type="text" name="campo4" placeholder="Edad" value="<?php echo $registro['fecha']; ?>"/>
-    <input type="text" name="campo5" placeholder="ingreso_bruto_mensual" value="<?php echo $registro['estado_legal_adopcion']; ?>"/>
+    <input type="hidden" name="id_adopcion" value="<?php echo $registro['id_adopciones']; ?>">
+    <input type="text" name="campo1" placeholder="ID de mascota" value="<?php echo $registro['id_mascota']; ?> " required/>
+    <input type="text" name="campo2" placeholder="ID del cliente" value="<?php echo $registro['id_cliente']; ?>" required/>
+    <input type="datetime-local" name="campo3" placeholder="fecha" value="<?php echo $registro['fecha']; ?>" required/>
+    <input type="text" name="campo4" placeholder="estado legal de la adopcion" value="<?php echo $registro['estado_legal_adopcion']; ?>" required/>
     <input type="submit" value="Guardar cambios">
 </form>
 <?php

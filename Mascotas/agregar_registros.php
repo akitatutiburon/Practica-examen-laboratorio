@@ -29,4 +29,4 @@ if (mysqli_query($conn, $sql)) {
 
 include '../cerrar_conexion.php';
 ?>
-<a class='boton_regresar' href='pag_principal.php'>Entendido</a>
+<a class='boton_regresar' href='pag_principal.php'></br>Entendido</a>

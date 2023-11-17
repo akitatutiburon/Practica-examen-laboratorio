@@ -1,9 +1,54 @@
 <?php
-// Quilombo para hacer un formulario que muestre los nombres de los registros de mascotas. Ya funciona xd
-if (isset($_POST['id_estado_legal_adopcion'])) {
-  $opcionSeleccionada = $_POST['id_estado_legal_adopcion'];
+include 'conexion.php';
 
-  // Procesar la opción seleccionada
-  echo "Has seleccionado la opción: " . $opcionSeleccionada;
+// Número de registros por página
+$registrosPorPagina = 10;
+
+// Obtener el número de página actual
+if (isset($_GET['pagina'])) {
+    $paginaActual = $_GET['pagina'];
+} else {
+    $paginaActual = 1;
 }
+
+// Calcular el desplazamiento
+$desplazamiento = ($paginaActual - 1) * $registrosPorPagina;
+
+// Consulta SQL con la cláusula LIMIT y OFFSET
+$query = "SELECT * FROM tabla LIMIT $registrosPorPagina OFFSET $desplazamiento";
+
+// Ejecutar la consulta
+$result = $conn->query($query);
+
+// Crear la tabla HTML
+echo "<table>";
+echo "<tr><th>ID</th><th>Nombre</th></tr>";
+
+// Mostrar los registros en la tabla
+while ($row = $result->fetch_row()) {
+    //printf("%s (%s)\n", $row[0], $row[1]);
+    echo "<tr>";
+    echo "<td>" . $row['id'] . "</td>";
+    echo "<td>" . $row['nombre'] . "</td>";
+    echo "</tr>";
+}
+
+echo "</table>";
+
+// Obtener el número total de registros
+$queryTotal = "SELECT COUNT(*) as total FROM tabla";
+$resultTotal = mysqli_query($conn, $queryTotal);
+$rowTotal = mysqli_fetch_assoc($resultTotal);
+$totalRegistros = $rowTotal['total'];
+
+// Calcular el número de páginas
+$totalPaginas = ceil($totalRegistros / $registrosPorPagina);
+
+// Mostrar los enlaces de paginación
+echo "<div class='pagination'>";
+for ($i = 1; $i <= $totalPaginas; $i++) {
+    echo "<a href='?pagina=$i'>$i</a>";
+}
+echo "</div>";
+
 ?>
