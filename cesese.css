@@ -1,3 +1,45 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+nav {
+    background-color: #555;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+    margin-right: 10px;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
 h1 {
     color: #315266;
 }
@@ -56,8 +98,3 @@ th, td {
 .boton_borrar:hover {
     background-color: darkred;
 }
-/* <--- Para darle color a los registros vacíos y que quede más lindo (ponele) --->
-error_registro {
-    color: yellow;
-}
-*/
