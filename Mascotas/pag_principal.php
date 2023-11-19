@@ -15,10 +15,16 @@
 <?php
 include '../conexion.php';
 
+// agarrar id de usuario que ingresa para sacar rol 
+// 1 = admin, 2 = vendedor
+include '../prueba1.php';
 
+echo "Numero del rol del usuario: " . $rol_usuario;
 // Consulta de todos los registros de la tabla "mascotas_disponibles"
 $sql = "SELECT * FROM mascotas";
 $result = $conn->query($sql);
+
+
 
 if ($result->num_rows > 0) {
     // Titulos de los atributos
@@ -34,10 +40,13 @@ if ($result->num_rows > 0) {
     <th>Imágen</th>
     <th>Estado de salud</th>
     <th>Descripcion</th>
-    <th>Estado legal de la mascota</th>
-    <th>Borrar</th>
-    <th>Editar</th>
-    </tr>";
+    <th>Estado legal de la mascota</th>";
+    if ($rol_usuario == 1){
+        echo 
+    "<th>Borrar</th>
+    <th>Editar</th>";
+    }
+    echo "</tr>";
 
     // Mostrar los registros en una tabla
     while ($row = $result->fetch_assoc()) {
@@ -194,6 +203,8 @@ if ($result->num_rows > 0) {
         }
         echo "</td>";
 
+        if ($rol_usuario == 1){
+            
         // Botón de borrar
         echo "<td>" . "
         <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_mascota'] . "'>Borrar</a>" . "
@@ -204,7 +215,7 @@ if ($result->num_rows > 0) {
         <a class='boton_editar' href='cambiar_datos_registro.php?id=" . $row['id_mascota'] . "'>Editar</a>" . "
         </td>";
         
-
+        }
         // <--- Fin de Tablas --->
         echo "</td>";
 
