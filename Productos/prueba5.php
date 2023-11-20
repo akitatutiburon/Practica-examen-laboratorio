@@ -22,6 +22,8 @@ $result_productos = $conn->query($regis_productos);
 
 // Verificar si hay registros y mostrarlos en una tabla
 if ($result_productos->num_rows > 0) {
+    echo "<a class='boton_editar' href='cambiar_datos_registro.php?id=" . $row['id_producto'] . "'>Filtrar</a>";
+
     echo "<table>";
     echo "<tr>
     <th>ID</th>

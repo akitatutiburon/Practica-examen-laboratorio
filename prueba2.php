@@ -60,11 +60,9 @@
     </nav>
     
     <main>
-        <!-- Contenido de la página -->
-    </main>
+        
+
     
-    <footer>
-        <!-- Pie de página -->
-    </footer>
+    </main>
 </body>
 </html>
