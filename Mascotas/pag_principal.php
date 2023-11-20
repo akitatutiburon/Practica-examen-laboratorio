@@ -2,17 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="../cesese.css">
-    <!-- Imagen de Chimuelo 
-        <img src="chimuelo.jfif" alt="Chimuelo"> 
-    -->
     <title>Mascotas</title>
-
-    
-    <script src="popup_eliminar_registro.js"></script>
-    <!-- <style>
-        background-image: url("imagenes/fondo.png");
-    </style> -->
-
 </head>
 <body>
     <!-- <h1>Lista de Mascotas</h1> -->
@@ -258,7 +248,6 @@ if ($rol_usuario == 1){
 include '../cerrar_conexion.php';
 ?>
 
- 
 
 
 </body>

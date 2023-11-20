@@ -15,6 +15,10 @@ $value_rol_usuario = $row['rol_usuario'];
 unset($_SESSION['rol_usuario']);
 $_SESSION['rol_usuario'] = $value_rol_usuario;
 
+$value_id_usuario = $row['id_usuario'];
+unset($_SESSION['id_usuario']);
+$_SESSION['id_usuario'] = $value_id_usuario;
+
 
 if (!$result) {
     die;
