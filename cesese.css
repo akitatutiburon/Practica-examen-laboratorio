@@ -1,63 +1,47 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #bafafa;
 }
-
 header {
     background-color: #333;
     color: #fff;
-    padding: 20px;
-    text-align: center;
+    padding: 10px;
+    text-align: left;
 }
-
 h1 {
     font-size: 24px;
     margin: 0;
+    color: #ffffff;
 }
-
 nav {
     background-color: #555;
     color: #fff;
     padding: 10px;
     text-align: center;
 }
-
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-
 li {
     display: inline;
     margin-right: 10px;
 }
-
 a {
     color: #fff;
     text-decoration: none;
 }
-
-
-
-h1 {
-    color: #315266;
-}
-body{
-    background-color: #85bdde ;
-}
-th {
+/* th {
     background-color: aquamarine;
-}
+} */
 tr {
     background-color: #bafafa;
     color: black;
 }
 p {
     color: blueviolet;
-}
-p1 {
-    color: plum;
 }
 td-editar {
     color: black;
@@ -66,13 +50,11 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
-
 th, td {
     border: 2px solid black;
     padding: 5px;
     text-align: left;
 }
-
 .boton_editar {
     background-color: goldenrod;
     color: white;
@@ -81,11 +63,9 @@ th, td {
     border-radius: 5px;
     cursor: pointer;
 }
-  
 .boton_editar:hover {
     background-color: darkgoldenrod;
 }
-
 .boton_borrar {
     background-color: red;
     color: white;
@@ -94,7 +74,6 @@ th, td {
     border-radius: 5px;
     cursor: pointer;
 }
-  
 .boton_borrar:hover {
     background-color: darkred;
 }

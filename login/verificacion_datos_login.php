@@ -1,7 +1,6 @@
 <?php
 include '../conexion.php';
-
-$value_id_usuario = "";
+session_start();
 
 $email = $_POST['usuario'];
 $password = $_POST['contrasena'];
@@ -10,23 +9,20 @@ $password = $_POST['contrasena'];
 $sql = "SELECT * FROM usuarios WHERE correo_electronico = '$email' AND contrasenia = '$password'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-$value_id_usuario = $row['id_usuario'];
-$value_id_usuario;
+// Variable inncesaria, solo es para entender mejor
+$value_rol_usuario = $row['rol_usuario'];
+
+unset($_SESSION['rol_usuario']);
+$_SESSION['rol_usuario'] = $value_rol_usuario;
+
 
 if (!$result) {
-    die;//("Error en la consulta: " . mysqli_error($conn));
+    die;
 }elseif (mysqli_num_rows($result) == 1) {
-    //echo "funciona";
-    $urlDestino = '../prueba1.php?id_usuario=' . $value_id_usuario;
+    $urlDestino = '../Mascotas/pag_principal.php';
     header('Location: ' . $urlDestino);
 } else {
     echo "no funciona, datos incorrectos";
 }
 
-
-
-
-echo $value_id_usuario;
-
-//include '../cerrar_conexion.php'
 ?>

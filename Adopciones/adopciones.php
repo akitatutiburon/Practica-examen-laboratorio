@@ -11,17 +11,38 @@
 
 </head>
 <body>
-    <h1>Lista de Adopciones</h1>
-
+    <header>
+        <h1>Lista de Adopciones</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Mascotas/pag_principal.php">Mascotas</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Productos/pag_principal.php">Productos</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Adopciones/adopciones.php">Adopciones</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Clientes/clientes.php">Clientes</a></li>
+        </ul>
+    </nav>
 
 <?php
 include '../conexion.php';
 
+session_start();
+$rol_usuario = $_SESSION['rol_usuario'];
 
 // Consulta para obtener todos los registros de la tabla "adopciones"
 $regis_adopciones = "SELECT * FROM adopciones";
 $result_adopciones = $conn->query($regis_adopciones);
 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //Recibir datos de formulario de datos cambiados (cambiar_datos_registro.php)
+    $columna_filtrar = $_POST["columna_filtrar"];
+    $forma_filtrar = $_POST["forma_filtrar"];
+    $regis_adopciones = "SELECT * FROM adopciones ORDER BY $columna_filtrar $forma_filtrar";
+    $result_adopciones = $conn->query($regis_adopciones);
+}
+
+include 'filtrar_datos.php';
 // Verificar si hay registros y mostrarlos en una tabla
 if ($result_adopciones->num_rows > 0) {
     echo "<table>";
@@ -30,10 +51,12 @@ if ($result_adopciones->num_rows > 0) {
     <th>Nombre del cliente</th>
     <th>Nombre de la mascota</th>
     <th>fecha</th>
-    <th>estado_legal_adopcion</th>
-    <th>Borrar</th>
-    <th>Editar</th>
-    </tr>";
+    <th>estado_legal_adopcion</th>";
+    if ($rol_usuario == 1){
+        echo "<th>Borrar</th>
+        <th>Editar</th>";
+    }
+    echo "</tr>";
     while ($row = $result_adopciones->fetch_assoc()) {
         echo "<tr>
         <td>" . $row["id_adopciones"] . "</td>
@@ -68,21 +91,25 @@ if ($result_adopciones->num_rows > 0) {
         } else {
             echo "No se encontraron resultados.";
         }
-        echo "</td>
-        <td>" . "
-        <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_adopciones'] . "'>Borrar</a>" . "
-        </td>
-        <td>" . "
-        <a class='boton_editar' href='cambiar_datos_registro.php?id=" . $row['id_adopciones'] . "'>Editar</a>" . "
-        </td>
-
-        </tr>";
+        echo "</td>";
+        if ($rol_usuario == 1){
+            echo "<td>" . "
+            <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_adopciones'] . "'>Borrar</a>" . "
+            </td>
+            <td>" . "
+            <a class='boton_editar' href='cambiar_datos_registro.php?id=" . $row['id_adopciones'] . "'>Editar</a>" . "
+            </td>";
+        }
+        echo "</tr>";
     }
     echo "</table>";
 } else {
     echo "No se encontraron registros en la tabla 'adopciones'.";
 }
-include 'formulario_agregar_registros.php';
+if ($rol_usuario == 1){
+    include 'formulario_agregar_registros.php';
+}
+
 include '../conexion.php';
 ?>
 

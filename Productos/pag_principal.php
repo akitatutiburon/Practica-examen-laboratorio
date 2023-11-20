@@ -8,18 +8,38 @@
 
 </head>
 <body>
-    <h1>Lista de Productos</h1>
+    <header>
+        <h1>Lista de Productos</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Mascotas/pag_principal.php">Mascotas</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Productos/pag_principal.php">Productos</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Adopciones/adopciones.php">Adopciones</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Clientes/clientes.php">Clientes</a></li>
+        </ul>
+    </nav>
 
 
 <?php
 include '../conexion.php';
 
-
-
+session_start();
+$rol_usuario = $_SESSION['rol_usuario'];
 
 $regis_productos = "SELECT * FROM productos";
 $result_productos = $conn->query($regis_productos);
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //Recibir datos de formulario de datos cambiados (cambiar_datos_registro.php)
+    $columna_filtrar = $_POST["columna_filtrar"];
+    $forma_filtrar = $_POST["forma_filtrar"];
+    $regis_productos = "SELECT * FROM productos ORDER BY $columna_filtrar $forma_filtrar";
+    $result_productos = $conn->query($regis_productos);
+}
+
+
+include 'filtrar_datos.php';
 // Verificar si hay registros y mostrarlos en una tabla
 if ($result_productos->num_rows > 0) {
     echo "<table>";
@@ -29,10 +49,12 @@ if ($result_productos->num_rows > 0) {
     <th>Descripción</th>
     <th>Imagén</th>
     <th>Categoría</th>
-    <th>Cantidad</th>
-    <th>Borrar</th>
-    <th>Editar</th>
-    </tr>";
+    <th>Cantidad</th>";
+    if ($rol_usuario == 1){
+        echo "<th>Borrar</th>
+        <th>Editar</th>";
+    }
+    echo "</tr>";
     while ($row = $result_productos->fetch_assoc()) {
         echo "<tr>
         <td>" . $row["id_producto"] . "</td>
@@ -61,20 +83,25 @@ if ($result_productos->num_rows > 0) {
         }
         echo "</td>";
         echo "<td>" . $row["cantidad"] . "</td>";
-        echo "<td>" . "
-        <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_producto'] . "'>Borrar</a>" . "
-        </td>
-        <td>" . "
-        <a class='boton_editar' href='cambiar_datos_registro.php?id=" . $row['id_producto'] . "'>Editar</a>" . "
-        </td>
-
-        </tr>";
+        if ($rol_usuario == 1){
+            echo "<td>" . "
+            <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_producto'] . "'>Borrar</a>" . "
+            </td>
+            <td>" . "
+            <a class='boton_editar' href='cambiar_datos_registro.php?id=" . $row['id_producto'] . "'>Editar</a>" . "
+            </td>";
+        }
+        echo "</tr>";
     }
     echo "</table>";
 } else {
     echo "No se encontraron registros en la tabla 'adopciones'.";
 }
-include 'formulario_agregar_registros.php';
+
+if ($rol_usuario == 1){
+    include 'formulario_agregar_registros.php';
+}
+
 include '../conexion.php';
 ?>
 

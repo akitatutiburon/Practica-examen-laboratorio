@@ -12,8 +12,8 @@
         header {
             background-color: #333;
             color: #fff;
-            padding: 20px;
-            text-align: center;
+            padding: 10px;
+            text-align: left;
         }
 
         h1 {
@@ -52,10 +52,10 @@
     
     <nav>
         <ul>
-            <li><a href="#">Mascotas</a></li>
-            <li><a href="#">Nosotros</a></li>
-            <li><a href="#">Servicios</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Mascotas/pag_principal.php">Mascotas</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Productos/pag_principal.php">Productos</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Adopciones/adopciones.php">Adopciones</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Clientes/clientes.php">Clientes</a></li>
         </ul>
     </nav>
     

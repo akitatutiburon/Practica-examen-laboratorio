@@ -5,27 +5,49 @@
     <!-- Imagen de Chimuelo 
         <img src="chimuelo.jfif" alt="Chimuelo"> 
     -->
-    <title>Lista de Mascotas</title>
-    <script src="popup_eliminar_registro.js"></script>
+    <title>Mascotas</title>
 
+    
+    <script src="popup_eliminar_registro.js"></script>
+    <!-- <style>
+        background-image: url("imagenes/fondo.png");
+    </style> -->
 
 </head>
 <body>
-    <h1>Lista de Mascotas</h1>
+    <!-- <h1>Lista de Mascotas</h1> -->
+
+    <header>
+        <h1>Lista de Mascotas</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Mascotas/pag_principal.php">Mascotas</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Productos/pag_principal.php">Productos</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Adopciones/adopciones.php">Adopciones</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Clientes/clientes.php">Clientes</a></li>
+        </ul>
+    </nav>
+
 <?php
 include '../conexion.php';
+session_start();
+$rol_usuario = $_SESSION['rol_usuario'];
 
-// agarrar id de usuario que ingresa para sacar rol 
-// 1 = admin, 2 = vendedor
-include '../prueba1.php';
-
-echo "Numero del rol del usuario: " . $rol_usuario;
 // Consulta de todos los registros de la tabla "mascotas_disponibles"
 $sql = "SELECT * FROM mascotas";
 $result = $conn->query($sql);
 
+// Para la parte de filtrar datos
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //Recibir datos de formulario de datos cambiados (cambiar_datos_registro.php)
+    $columna_filtrar = $_POST["columna_filtrar"];
+    $forma_filtrar = $_POST["forma_filtrar"];
+    $sql = "SELECT * FROM mascotas ORDER BY $columna_filtrar $forma_filtrar";
+    $result = $conn->query($sql);
+}
 
-
+include 'filtrar_datos.php';
 if ($result->num_rows > 0) {
     // Titulos de los atributos
     echo "<table>";
@@ -42,10 +64,10 @@ if ($result->num_rows > 0) {
     <th>Descripcion</th>
     <th>Estado legal de la mascota</th>";
     if ($rol_usuario == 1){
-        echo 
-    "<th>Borrar</th>
-    <th>Editar</th>";
+        echo "<th>Borrar</th>
+        <th>Editar</th>";
     }
+    
     echo "</tr>";
 
     // Mostrar los registros en una tabla
@@ -202,20 +224,20 @@ if ($result->num_rows > 0) {
                 break;
         }
         echo "</td>";
+        
 
         if ($rol_usuario == 1){
-            
-        // Botón de borrar
-        echo "<td>" . "
-        <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_mascota'] . "'>Borrar</a>" . "
-        </td>";
+           // Botón de borrar
+            echo "<td>" . "
+            <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_mascota'] . "'>Borrar</a>" . "
+            </td>";
 
-        // Botón de editar
-        echo "<td>" . "
-        <a class='boton_editar' href='cambiar_datos_registro.php?id=" . $row['id_mascota'] . "'>Editar</a>" . "
-        </td>";
-        
+            // Botón de editar
+            echo "<td>" . "
+            <a class='boton_editar' href='cambiar_datos_registro.php?id=" . $row['id_mascota'] . "'>Editar</a>" . "
+            </td>";
         }
+        
         // <--- Fin de Tablas --->
         echo "</td>";
 
@@ -226,8 +248,13 @@ if ($result->num_rows > 0) {
     echo "No se encontraron registros en la tabla.";
 }
 
-//<---  Colocar botón de formulario de añadir registros --->
-include 'formulario_agregar_registros.php';
+
+if ($rol_usuario == 1){
+    //<---  Colocar botón de formulario de añadir registros --->
+    include 'formulario_agregar_registros.php';
+}
+
+
 include '../cerrar_conexion.php';
 ?>
 

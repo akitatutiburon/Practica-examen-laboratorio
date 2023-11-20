@@ -15,10 +15,10 @@
 </form>
 
 
-<button id="miBoton" onclick="activarFormulario()">Añadir registros</button>
+<button id="miBoton" onclick="activarFormularioAniadirRegistro()">Añadir registros</button>
 
 <script>
-  function activarFormulario() {
+  function activarFormularioAniadirRegistro() {
     var formulario = document.getElementById("formulario_aniadir_registro");
     formulario.style.display = "block";
   }
