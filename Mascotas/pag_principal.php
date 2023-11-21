@@ -5,7 +5,6 @@
     <title>Mascotas</title>
 </head>
 <body>
-    <!-- <h1>Lista de Mascotas</h1> -->
 
     <header>
         <h1>Lista de Mascotas</h1>
@@ -16,11 +15,13 @@
             <li><a href="http://localhost/Practica-examen-laboratorio/Productos/pag_principal.php">Productos</a></li>
             <li><a href="http://localhost/Practica-examen-laboratorio/Adopciones/adopciones.php">Adopciones</a></li>
             <li><a href="http://localhost/Practica-examen-laboratorio/Clientes/clientes.php">Clientes</a></li>
+            <li><a href="http://localhost/Practica-examen-laboratorio/Mi_cuenta/pag_principal.php">Mi cuenta</a></li>
         </ul>
     </nav>
-
+<main>
 <?php
 include '../conexion.php';
+include '../login/redirect_login.php';
 session_start();
 $rol_usuario = $_SESSION['rol_usuario'];
 
@@ -247,7 +248,7 @@ if ($rol_usuario == 1){
 
 include '../cerrar_conexion.php';
 ?>
-
+</main>
 
 
 </body>
