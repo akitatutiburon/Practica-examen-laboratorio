@@ -26,7 +26,7 @@ if ($row !==  null) {
     if (!$result) {
         die;
     }elseif (mysqli_num_rows($result) == 1) {
-        $urlDestino = 'http://localhost/Practica-examen-laboratorio/Mascotas/pag_principal.php';
+        $urlDestino = '../Mascotas/pag_principal.php';
         header('Location: ' . $urlDestino);
     } else {
         echo "Datos incorrectos, intente nuevamente <a style='color: blue; text-decoration: underline blue;' href='http://localhost/Practica-examen-laboratorio/login/pag_login.php'>aquí</a>.";

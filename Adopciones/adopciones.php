@@ -16,11 +16,11 @@
     </header>
     <nav>
         <ul>
-            <li><a href="http://localhost/Practica-examen-laboratorio/Mascotas/pag_principal.php">Mascotas</a></li>
-            <li><a href="http://localhost/Practica-examen-laboratorio/Productos/pag_principal.php">Productos</a></li>
-            <li><a href="http://localhost/Practica-examen-laboratorio/Adopciones/adopciones.php">Adopciones</a></li>
-            <li><a href="http://localhost/Practica-examen-laboratorio/Clientes/clientes.php">Clientes</a></li>
-            <li><a href="http://localhost/Practica-examen-laboratorio/Mi_cuenta/pag_principal.php">Mi cuenta</a></li>
+            <li><a href="../Mascotas/pag_principal.php">Mascotas</a></li>
+            <li><a href="../Productos/pag_principal.php">Productos</a></li>
+            <li><a href="../Adopciones/adopciones.php">Adopciones</a></li>
+            <li><a href="../Clientes/clientes.php">Clientes</a></li>
+            <li><a href="../Mi_cuenta/pag_principal.php">Mi cuenta</a></li>
         </ul>
     </nav>
 
