@@ -88,7 +88,13 @@ if ($result_productos->num_rows > 0) {
                 break;
         }
         echo "</td>";
-        echo "<td>" . $row["cantidad"] . "</td>";
+        echo "<td>" . $row["cantidad"];
+        if ($row['cantidad'] <= 3 ){
+            include "alerta_stock.php";
+        }
+        echo "</td>";
+
+
         if ($rol_usuario == 1){
             echo "<td>" . "
             <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_producto'] . "'>Borrar</a>" . "

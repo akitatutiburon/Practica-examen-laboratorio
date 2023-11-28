@@ -1,69 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Mi página</title>
-    <!-- <link rel="stylesheet" href="cesese.css"> -->
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: left;
-        }
-
-        h1 {
-            font-size: 24px;
-            margin: 0;
-        }
-
-        nav {
-            background-color: #555;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        li {
-            display: inline;
-            margin-right: 10px;
-        }
-
-        a {
-            color: #fff;
-            text-decoration: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Estilo para el cuadro de texto que aparecerá */
+    #mensaje {
+      display: none;
+      position: absolute;
+      background-color: #f8f8f8;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+  <title>Ejemplo de Producto Agotándose</title>
 </head>
 <body>
-    <header>
-        <h1>Título de la página</h1>
-    </header>
-    
-    <nav>
-        <ul>
-            <li><a href="http://localhost/Practica-examen-laboratorio/Mascotas/pag_principal.php">Mascotas</a></li>
-            <li><a href="http://localhost/Practica-examen-laboratorio/Productos/pag_principal.php">Productos</a></li>
-            <li><a href="http://localhost/Practica-examen-laboratorio/Adopciones/adopciones.php">Adopciones</a></li>
-            <li><a href="http://localhost/Practica-examen-laboratorio/Clientes/clientes.php">Clientes</a></li>
-            <li><a href="http://localhost/Practica-examen-laboratorio/Mi_cuenta/pag_principal.php">Mi cuenta</a></li>
-        </ul>
-    </nav>
-    
-    <main>
-        
 
-    
-    </main>
+  <!-- Texto que activará el mensaje al pasar el ratón por encima -->
+  <p onmouseover="mostrarMensaje()" onmouseout="ocultarMensaje()">Producto en oferta</p>
+
+  <!-- Cuadro de texto que aparecerá al pasar el ratón por encima del texto -->
+  <div id="mensaje">Producto a punto de agotarse</div>
+
+  <script>
+    // Función para mostrar el mensaje
+    function mostrarMensaje() {
+      document.getElementById("mensaje").style.display = "block";
+    }
+
+    // Función para ocultar el mensaje
+    function ocultarMensaje() {
+      document.getElementById("mensaje").style.display = "none";
+    }
+  </script>
+
 </body>
 </html>

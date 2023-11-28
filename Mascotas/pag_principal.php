@@ -3,6 +3,13 @@
 <head>
     <link rel="stylesheet" href="../cesese.css">
     <title>Mascotas</title>
+    <style>
+        body {
+          font-family: 'Inconsolata', monospace;
+          font-size: 14px;
+          line-height: 1.0;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,7 +27,7 @@
     </nav>
 <main>
 <?php
-include '../conexion.php';
+include '../conexion_OOP.php';
 include '../login/redirect_login.php';
 session_start();
 $rol_usuario = $_SESSION['rol_usuario'];

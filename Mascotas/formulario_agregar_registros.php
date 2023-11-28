@@ -3,13 +3,27 @@
     nombre : <input type="text" name="nombre" required/><br/>
     especie : <input type="text" name="especie" required/><br/>
     raza: <input type="text" name="raza" /><br/>
-    edad: <input type="text" name="edad" /><br/>
-    genero: <input type="text" name="genero" required /><br/> <!--  Poner obligatorio -->
+    edad: <input type="number" name="edad" min="0" /><br/>
+    Género: <select name="genero" id="genero" required>
+      <option value="1">Macho</option>
+      <option value="2">Hembra</option>
+    </select><br>
     imagen: <input type="text" name="imagen" /><br/>
     descripcion: <input type="text" name="descripcion" required/><br/>
-    estado_salud: <input type="text" name="estado_salud" required /><br/> <!--  Poner obligatorio -->
-    estado_legal_mascota: <input type="text" name="estado_legal_mascota" required /><br/> <!--  Poner obligatorio -->
-    precio: <input type="text" name="precio" required/><br/>
+    Estado de salud: <select name="estado_salud" id="estado_salud">
+      <option value="1">Sano</option>
+      <option value="2">Débil</option>
+      <option value="3">Enfermo</option>
+      <option value="4">Muerto</option>
+      <option value="5">En rehabilitación</option>
+      <option value="6">En cuidados intensivos</option>
+    </select><br>
+    Estado legal de la mascota: <select name="estado_legal_mascota" id="estado_legal_mascota">
+      <option value="1">Adoptada</option>
+      <option value="2">En proceso de adopción</option>
+      <option value="3">Pendiente de adopción</option>
+    </select><br/>
+    precio: <input type="number" name="precio" min="0" max="999" step=".01"required/><br/>
     <input type="submit" value="Enviar"> 
     <input type="reset" value="Reset">
 </form>

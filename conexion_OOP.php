@@ -1,5 +1,6 @@
 <?php
 
+
 class conexion {
     // // Atributos
     // private $atributo1;
@@ -50,17 +51,17 @@ class conexion {
     
     // Métodos                     Debo llamar los atributos, no valores
     public function hacer_conexion($server, $nombre_usuario, $contrasena, $base_datos) {
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        $conn = new mysqli($server, $nombre_usuario, $contrasena, $base_datos);
 
         // Verificar si la conexión fue exitosa
         if ($conn->connect_error) {
             die('Error de conexión: ' . $conn->connect_error);
         } else {
-            print 'Funciona'. $conn;
+            //print 'Conexión hecha';
         }
     }
     public function prueba($server){
-        echo $server . "pelele";
+        //echo $server . "pelele";
     }
     
    
@@ -74,19 +75,6 @@ $dbname = "tienda_mascotas";
 
 // Crear una instancia de la clase
 $objeto = new conexion("localhost", "root", "", "tienda_mascotas");
-
-// // Acceder a los atributos y métodos
-// echo $objeto->server;
-// $objeto->get_servidor($objeto);
-// $objeto->set_servidor("tuma");
-// echo $objeto->server;
-
-// $objeto->hacer_conexion($server, $nombre_usuario, $contrasena, $base_datos);
-
-$objeto->prueba(4);
-
-// $objeto->setAtributo2("nuevo valor"); // Cambia el valor de atributo2
-// echo $objeto->getAtributo2(); // Imprime el nuevo valor de atributo2
-
+$objeto->hacer_conexion($servername, $username, $password, $dbname);
 
 ?>
