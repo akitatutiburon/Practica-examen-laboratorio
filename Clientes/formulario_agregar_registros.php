@@ -1,5 +1,5 @@
 <form action="agregar_registros.php" method="post" id="formulario_aniadir_registro" style="display: none;">
-    id_mascota: <input type="hidden" name="id_cliente" /><br/>
+    id_cliente: <input type="hidden" name="id_cliente" /><br/>
     nombres: <input type="text" name="nombres" required/><br/>
     apellidos: <input type="text" name="apellidos" required/><br/>
     Número de C.I.: <input type="number" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}" name="numero_ci" required /><br/>

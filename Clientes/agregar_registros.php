@@ -12,7 +12,7 @@ $ingreso_bruto_mensual = $_POST['ingreso_bruto_mensual'];
 
 // Crear la consulta SQL para insertar el registro en la tabla
 $sql = "INSERT INTO  clientes (`id_cliente`, `nombres`, `apellidos`, `numero_ci`, `edad`, `ingreso_bruto_mensual`) VALUES ('$id_cliente', '$nombres', '$apellidos', '$numero_ci', '$edad', '$ingreso_bruto_mensual')";
-echo $sql. " ";
+//echo $sql. " ";
 
 // Ejecutar la consulta SQL
 if (mysqli_query($conn, $sql)) {

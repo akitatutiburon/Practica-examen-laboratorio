@@ -227,7 +227,7 @@ if ($result->num_rows > 0) {
         if ($rol_usuario == 1){
            // Botón de borrar
             echo "<td>" . "
-            <a class='boton_borrar' href='eliminar_registro.php?id=" . $row['id_mascota'] . "'>Borrar</a>" . "
+            <a class='boton_borrar' href='eliminar_oop.php?id=" . $row['id_mascota'] . "'>Borrar</a>" . "
             </td>";
 
             // Botón de editar

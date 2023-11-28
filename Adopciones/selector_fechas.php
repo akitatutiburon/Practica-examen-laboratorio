@@ -8,7 +8,7 @@
 </form>
 
 
-<button id="boton_activar_formulario_selector_fechas" onclick="activarFormularioBuscador()">Buscador</button>
+<button id="boton_activar_formulario_selector_fechas" onclick="activarFormularioBuscador()">Reportes</button>
 
 <script>
   function activarFormularioBuscador() {

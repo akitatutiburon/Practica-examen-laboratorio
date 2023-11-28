@@ -29,10 +29,10 @@ if ($row !==  null) {
         $urlDestino = '../Mascotas/pag_principal.php';
         header('Location: ' . $urlDestino);
     } else {
-        echo "Datos incorrectos, intente nuevamente <a style='color: blue; text-decoration: underline blue;' href='http://localhost/Practica-examen-laboratorio/login/pag_login.php'>aquí</a>.";
+        echo "Datos incorrectos, intente nuevamente <a style='color: blue; text-decoration: underline blue;' href='http://localhost/laboratorio_3ro/practica%20examen%20final/Practica-examen-laboratorio/Login/pag_login.php'>aquí</a>.";
     }
 } else {
-    echo "Datos incorrectos, intente nuevamente <a style='color: blue; text-decoration: underline blue;' href='http://localhost/Practica-examen-laboratorio/login/pag_login.php'>aquí</a>.";
+    echo "Datos incorrectos, intente nuevamente <a style='color: blue; text-decoration: underline blue;' href='http://localhost/laboratorio_3ro/practica%20examen%20final/Practica-examen-laboratorio/Login/pag_login.php'>aquí</a>.";
 }
 
 
