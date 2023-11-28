@@ -35,6 +35,54 @@ $rol_usuario = $_SESSION['rol_usuario'];
 $regis_adopciones = "SELECT * FROM adopciones";
 $result_adopciones = $conn->query($regis_adopciones);
 
+if (isset($_GET['nombre_busqueda']) && $_GET['categoria_busqueda']) {
+    $termino_busqueda = $_GET['nombre_busqueda'];
+    $categoria_busqueda = $_GET['categoria_busqueda'];
+
+    if ($categoria_busqueda == 'id_mascota'){
+        $get_nombres_id_mascota = "SELECT id_mascota FROM mascotas WHERE nombre LIKE '%$termino_busqueda%'";
+        $id_mascota1 = $conn->query($get_nombres_id_mascota);
+        if ($id_mascota1) {
+            $idMascotas = [];
+            // Recorrer los resultados y almacenar en el array
+            while ($fila = $id_mascota1->fetch_assoc()) {
+                $idMascotas[] = $fila['id_mascota'];
+            }
+            if (!empty($idMascotas)){
+                $id_mascota_buscado = $idMascotas[0];
+                $regis_adopciones = "SELECT * FROM adopciones WHERE $categoria_busqueda = $id_mascota_buscado";
+                $result_adopciones = $conn->query($regis_adopciones);
+            } else {
+                echo "No se escuentran mascotas con ese nombre";
+            }
+            
+        } else {
+            // Manejar el error si la consulta falla
+            echo "Error en la consulta: " . $conn->error;
+        }
+    } elseif ($categoria_busqueda == 'id_cliente'){
+        $get_nombres_id_cliente = "SELECT id_cliente FROM clientes WHERE nombres LIKE '%$termino_busqueda%'";
+        $id_cliente1 = $conn->query($get_nombres_id_cliente);
+        if ($id_cliente1) {
+            $idClientes = [];
+            // Recorrer los resultados y almacenar en el array
+            while ($fila = $id_cliente1->fetch_assoc()) {
+                $idClientes[] = $fila['id_cliente'];
+            }
+            if (!empty($idClientes)){
+                $id_cliente_buscado = $idClientes[0];
+                $regis_adopciones = "SELECT * FROM adopciones WHERE $categoria_busqueda = $id_cliente_buscado";
+                $result_adopciones = $conn->query($regis_adopciones);
+            } else {
+                echo "No se escuentran clientes con ese nombre";
+            } 
+        } else {
+            // Manejar el error si la consulta falla
+            echo "Error en la consulta: " . $conn->error;
+        }
+    }
+}
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Recibir datos de formulario de datos cambiados (cambiar_datos_registro.php)
@@ -44,8 +92,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result_adopciones = $conn->query($regis_adopciones);
 }
 
+
+include 'buscador.php';
 include 'filtrar_datos.php';
-// Verificar si hay registros y mostrarlos en una tabla
+
 if ($result_adopciones->num_rows > 0) {
     echo "<table>";
     echo "<tr>
@@ -106,11 +156,12 @@ if ($result_adopciones->num_rows > 0) {
     }
     echo "</table>";
 } else {
-    echo "No se encontraron registros en la tabla 'adopciones'.";
+    echo "No se encontraron registros en la tabla 'adopciones' con ese cliente o mascota.";
 }
 if ($rol_usuario == 1){
     include 'formulario_agregar_registros.php';
 }
+include 'selector_fechas.php';
 
 include '../conexion.php';
 ?>

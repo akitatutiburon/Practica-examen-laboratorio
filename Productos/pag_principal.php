@@ -32,6 +32,15 @@ $rol_usuario = $_SESSION['rol_usuario'];
 $regis_productos = "SELECT * FROM productos";
 $result_productos = $conn->query($regis_productos);
 
+if (isset($_GET['nombre_busqueda']) && $_GET['categoria_busqueda']) {
+    $termino_busqueda = $_GET['nombre_busqueda'];
+    $categoria_busqueda = $_GET['categoria_busqueda'];
+    
+    $regis_productos = "SELECT * FROM productos WHERE $categoria_busqueda LIKE '%$termino_busqueda%'";
+    $result_productos = $conn->query($regis_productos);
+}
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Recibir datos de formulario de datos cambiados (cambiar_datos_registro.php)
     $columna_filtrar = $_POST["columna_filtrar"];
@@ -39,6 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $regis_productos = "SELECT * FROM productos ORDER BY $columna_filtrar $forma_filtrar";
     $result_productos = $conn->query($regis_productos);
 }
+
+
+
+include 'buscador.php';
 
 
 include 'filtrar_datos.php';
